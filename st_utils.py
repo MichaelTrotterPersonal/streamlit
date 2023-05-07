@@ -17,10 +17,10 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Filtered dataframe
     """
-    modify = st.checkbox("Add filters")
+    # modify = st.checkbox("Add filters")
 
-    if not modify:
-        return df
+    # if not modify:
+    #     return df
 
     df = df.copy()
 
@@ -38,7 +38,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     modification_container = st.container()
 
     with modification_container:
-        to_filter_columns = st.multiselect("Filter dataframe on", df.columns)
+        to_filter_columns = st.multiselect("Filter dataframe", df.columns)
         for column in to_filter_columns:
             left, right = st.columns((1, 20))
             
