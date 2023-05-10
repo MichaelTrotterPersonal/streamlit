@@ -15,7 +15,7 @@ def id_probs(num_ids):
 
 def generate_ids(num_names):
     # Download a list of names from a random name generator API
-    response = requests.get(f'https://randomuser.me/api/?inc=name&noinfo&nat=us&results={200}')
+    response = requests.get(f'https://randomuser.me/api/?inc=name&noinfo&nat=us&results={80}')
     data = response.json()
 
     # Extract the first and last names from the API response
@@ -175,7 +175,7 @@ def generate_calling_functions(calling_file):
 
 def generate_level_and_mesage():
 
-    LEVELS = ['USAGE'] * 10 + ['ERROR'] * 5 + ['WARNING', 'INFO', 'DEBUG']
+    LEVELS = ['USAGE'] * 10 + ['ERROR','WARNING', 'INFO', 'DEBUG']
     level = random.choice(LEVELS)
 
     if level == 'USAGE':

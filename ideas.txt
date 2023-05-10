@@ -1,0 +1,15 @@
+Search and filter logs
+Visualise the filtered results
+View errors chronologically
+
+
+
+Visualisations - 
+
+	- usage by date on a plot
+	- usage by hour of week
+	- stacked bar chart with power user and breakdown of their tool usages
+	- message word cloud
+
+
+

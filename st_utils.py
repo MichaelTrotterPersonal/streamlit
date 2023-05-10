@@ -6,6 +6,7 @@ from pandas.api.types import (
 )
 import pandas as pd
 import streamlit as st
+import base64
 
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -28,7 +29,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.columns:
         if is_object_dtype(df[col]):
             try:
-                df[col] = pd.to_datetime(df[col])
+                df[col] = pd.to_datetime(df[col],format="%Y-%m-%d %H:%M:%S,%f")
             except Exception:
                 pass
 
@@ -38,7 +39,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     modification_container = st.container()
 
     with modification_container:
-        to_filter_columns = st.multiselect("Filter dataframe", df.columns)
+        to_filter_columns = st.multiselect("Log Filtering", df.columns)
         for column in to_filter_columns:
             left, right = st.columns((1, 20))
             
@@ -84,3 +85,24 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     df = df[df[column].astype(str).str.contains(user_text_input)]
 
     return df
+
+
+def error_colour_coding(row):
+    return ['background-color:rgba(255,0,0,0.1)'] * len(row) if row.level == "ERROR" else [None] * len(row)
+
+
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
+        background-size: cover;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+  

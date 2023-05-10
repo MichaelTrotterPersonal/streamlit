@@ -1,0 +1,27 @@
+{
+    "timestamp": "2023-05-08 17:22:36,893",
+    "level": "USAGE",
+    "info": {
+        "user": "doejohn",
+        "workstation": "A0080717",
+        "calling_file": "C:\\doejohn\\test-toolbox\\test-toolbox.pyt",
+        "arcpy_version": "2.9.5",
+        "toolbox_name": "test-toolbox",
+        "toolbox_version": "0.1.0",
+        "func_file": "C:\\doejohn\\test-toolbox\\toolpackage\\mytool.py",
+        "func_name": "MyTool.execute",
+        "runtime": 4.472975730895996,
+        "version": "1.0.0",
+        "log_version": "0.2.8"
+    },
+    "message": "Toolbox run"
+}
+
+
+
+
+
+
+
+
+

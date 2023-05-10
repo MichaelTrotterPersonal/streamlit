@@ -2,7 +2,7 @@
 import pandas as pd
 import streamlit as st
 from data_generation import get_records
-from st_utils import filter_dataframe
+from st_utils import filter_dataframe, error_colour_coding, add_bg_from_local
 import seaborn as sns
 from matplotlib import pyplot as plt
 from io import BytesIO
@@ -14,14 +14,29 @@ def get_record_data():
 
 def main():
 
-    st. set_page_config(layout="wide")
+    st. set_page_config(layout="wide",page_title="My Streamlit App", page_icon="resources/DIADlogo.png")
     
+    add_bg_from_local(r"resources/bg.jpg")
+    
+    title_container = st.container()
+    with title_container:
+        col1, mid, col2 = st.columns([25,35,14])
+        with col2:
+            st.image("resources/AGODIADLogos.png",width=400)
+        with col1:
+            title = '<p style="color:black; font-family:Monospace; font-size: 60px; margin-top: auto;">DIAD Log Analytics</p>'
+            st.markdown(title,unsafe_allow_html=True)
+        
+        
+
     df = filter_dataframe(get_record_data())
     df['timestamp'] = pd.to_datetime(df['timestamp'])
-    st.dataframe(df,width=3000)
+    st.dataframe(df.style.apply(error_colour_coding,axis=1),width=3000)
 
     tab1, tab2, tab3 = st.tabs(["Usage trend", "Usage weekly heatmap", "User breakdown"])
 
+
+    
     with tab1:
         count_by_day = df.groupby(pd.Grouper(key='timestamp', freq='D')).size()
         count_df = pd.DataFrame(count_by_day)
