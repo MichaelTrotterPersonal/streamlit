@@ -88,7 +88,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def error_colour_coding(row):
-    return ['background-color:rgba(255,0,0,0.1)'] * len(row) if row.level == "ERROR" else [None] * len(row)
+    return ['background-color:rgba(242, 140, 133,0.8)'] * len(row) if row.level == "ERROR" else [None] * len(row)
 
 
 def add_bg_from_local(image_file):

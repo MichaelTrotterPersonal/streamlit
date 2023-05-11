@@ -14,18 +14,23 @@ def get_record_data():
 
 def main():
 
-    st. set_page_config(layout="wide",page_title="My Streamlit App", page_icon="resources/DIADlogo.png")
+    st.set_page_config(layout="wide",page_title="Log Jam", page_icon="resources/DIADlogo.png")
     
-    add_bg_from_local(r"resources/bg.jpg")
+    #add_bg_from_local(r"resources/bg.jpg")
     
     title_container = st.container()
     with title_container:
-        col1, mid, col2 = st.columns([25,35,14])
+        col1, mid, col2 = st.columns([8,1,3])
+
+        with col1:
+            title = '<p style="color:white; font-family:Monospace; font-size: 60px; margin-top: auto;">Log Jam</p>'
+            subcol1, subcol2 = st.columns([1,10])
+            with subcol1:
+                st.image("resources/logjam_light.png",width=200)
+            with subcol2:
+                st.markdown(title,unsafe_allow_html=True)
         with col2:
             st.image("resources/AGODIADLogos.png",width=400)
-        with col1:
-            title = '<p style="color:black; font-family:Monospace; font-size: 60px; margin-top: auto;">DIAD Log Analytics</p>'
-            st.markdown(title,unsafe_allow_html=True)
         
         
 
@@ -61,6 +66,6 @@ def main():
         ax = df_pivot.plot(kind='bar', stacked=True)
         st.bar_chart(df_pivot)
 
-    
+   
 if __name__ == "__main__":
     main()
