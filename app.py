@@ -16,7 +16,7 @@ def main():
 
     st.set_page_config(layout="wide",page_title="Log Jam", page_icon="resources/DIADlogo.png")
     
-    #add_bg_from_local(r"resources/bg.jpg")
+    st.markdown("<h1 style='text-align: center; color:red; font-family:Monospace; font-size: 20px;'>// All data shown here is synthetic and is for demonstration purposes only //</h1>", unsafe_allow_html=True)
     
     title_container = st.container()
     with title_container:
